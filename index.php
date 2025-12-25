@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahalya Bhumi Resorts | Luxury Eco Tourism</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== MODERN CLEAN DESIGN ===== */
+        :root {
+            --primary: #1a5f7a;      /* Deep Teal */
+            --secondary: #57cc99;    /* Fresh Green */
+            --accent: #ffd166;       /* Warm Gold */
+            --light: #f8f9fa;        /* Light Gray */
+            --dark: #2d3748;         /* Dark Gray */
+            --text: #4a5568;         /* Text Gray */
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== MINIMALIST HEADER WITH BURGER MENU ===== */
+        header {
+            background: var(--white);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+            z-index: 1001;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.1;
+        }
+
+        .logo-tagline {
+            font-size: 0.75rem;
+            color: var(--secondary);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* ===== BURGER MENU STYLES ===== */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-menu a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== CLEAN SLIDESHOW ===== */
+        .hero-slideshow {
+            height: 85vh;
+            position: relative;
+            margin-top: 80px;
+            overflow: hidden;
+            border-radius: 0 0 var(--radius) var(--radius);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 60px 40px 40px;
+            color: var(--white);
+        }
+
+        .slide-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* ===== SECTIONS WITH BREATHING SPACE ===== */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .title-line {
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* ===== MINIMAL GRID LAYOUTS ===== */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .grid-6 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* ===== CLEAN CARD DESIGN ===== */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* ===== SPECIAL CUISINES SECTION ===== */
+        .cuisine-section {
+            background: linear-gradient(to bottom, #f8fdfa, var(--white));
+        }
+
+        .cuisine-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .cuisine-header h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .styled-intro {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text);
+            line-height: 1.8;
+            padding: 0 20px;
+        }
+
+        /* ===== FEATURE IMAGE WITH OVERLAY ===== */
+        .feature-card {
+            position: relative;
+            height: 400px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 40px;
+        }
+
+        .feature-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feature-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(26, 95, 122, 0.9), transparent);
+            padding: 40px;
+            color: var(--white);
+        }
+
+        .feature-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .feature-content p {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #ffc145;
+            transform: translateY(-2px);
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services-section {
+            background-color: #f8fdfa;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 30px 25px;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== CLEAN NEWSLETTER ===== */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary), #2a7f9c);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .newsletter h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-btn {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0 35px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .form-btn:hover {
+            background: #ffc145;
+        }
+
+        /* ===== CLEAN FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: #cbd5e0;
+            padding-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .contact-info i {
+            color: var(--secondary);
+            margin-top: 4px;
+            width: 18px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 25px 0;
+            border-top: 1px solid #4a5568;
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .grid-6, .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .hero-slideshow {
+                height: 70vh;
+            }
+            .slide-title {
+                font-size: 2rem;
+            }
+            .feature-card {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* ===== BURGER MENU FOR MOBILE ===== */
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 100px;
+                padding-left: 30px;
+                gap: 20px;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                opacity: 0;
+                transform: translateX(20px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+            
+            .nav-menu.active li {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            .nav-menu.active li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-menu.active li:nth-child(2) { transition-delay: 0.15s; }
+            .nav-menu.active li:nth-child(3) { transition-delay: 0.2s; }
+            .nav-menu.active li:nth-child(4) { transition-delay: 0.25s; }
+            .nav-menu.active li:nth-child(5) { transition-delay: 0.3s; }
+            .nav-menu.active li:nth-child(6) { transition-delay: 0.35s; }
+            
+            .nav-menu a {
+                font-size: 1.1rem;
+                padding: 10px 0;
+                display: block;
+                border-bottom: 1px solid #f0f0f0;
+                width: 90%;
+            }
+            
+            .nav-menu a::after {
+                display: none;
+            }
+            
+            /* ===== MOBILE RESPONSIVE SECTIONS ===== */
+            section {
+                padding: 70px 0;
+            }
+            
+            .slide-overlay {
+                padding: 40px 20px 30px;
+            }
+            
+            .slide-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .styled-intro {
+                font-size: 1rem;
+                padding: 0 10px;
+                margin-bottom: 30px;
+            }
+            
+            .card-img {
+                height: 180px;
+            }
+            
+            .card-content {
+                padding: 20px;
+            }
+            
+            .card-title {
+                font-size: 1.2rem;
+            }
+            
+            .feature-card {
+                height: 300px;
+                margin-top: 30px;
+            }
+            
+            .feature-content {
+                padding: 25px;
+            }
+            
+            .feature-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                padding: 0 15px;
+            }
+            
+            .form-btn {
+                padding: 15px;
+                width: 100%;
+            }
+            
+            .newsletter {
+                padding: 60px 0;
+            }
+            
+            .newsletter h3 {
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .grid-6, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .hero-slideshow {
+                height: 60vh;
+                margin-top: 70px;
+                border-radius: 0;
+            }
+            
+            .slide-overlay {
+                padding: 30px 15px 20px;
+            }
+            
+            .slide-title {
+                font-size: 1.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .styled-intro {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            
+            .card-img {
+                height: 160px;
+            }
+            
+            .feature-card {
+                height: 250px;
+            }
+            
+            .feature-content {
+                padding: 20px;
+            }
+            
+            .feature-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .feature-content p {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+            
+            .btn {
+                padding: 10px 22px;
+                font-size: 0.9rem;
+            }
+            
+            .service-card {
+                padding: 25px 20px;
+            }
+            
+            .service-icon {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-col h4 {
+                margin-bottom: 20px;
+            }
+            
+            .footer-links li {
+                margin-bottom: 10px;
+            }
+            
+            .contact-info p {
+                font-size: 0.9rem;
+            }
+            
+            .copyright {
+                padding: 20px 0;
+                font-size: 0.85rem;
+            }
+            
+            .logo-main {
+                font-size: 1.4rem;
+            }
+            
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .newsletter h3 {
+                font-size: 1.5rem;
+            }
+            
+            .newsletter p {
+                font-size: 0.95rem;
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .logo-main {
+                font-size: 1.2rem;
+            }
+            
+            .logo-tagline {
+                font-size: 0.65rem;
+            }
+            
+            .hero-slideshow {
+                height: 50vh;
+            }
+            
+            .slide-title {
+                font-size: 1.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.4rem;
+            }
+            
+            .card-content {
+                padding: 15px;
+            }
+            
+            .feature-card {
+                height: 220px;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        /* ===== OVERLAY FOR MOBILE MENU ===== */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <!-- CLEAN HEADER WITH BURGER MENU -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="logo-text">
+                    <div class="logo-main">Ahalya Bhumi</div>
+                    <div class="logo-tagline">ECO TOURISM RESORT</div>
+                </div>
+            </a>
+            
+            <!-- Burger Menu Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="./about.php" class="nav-link">About</a></li>
+                <li><a href="./rooms.php" class="nav-link">Rooms</a></li>
+                <li><a href="#cuisine" class="nav-link">Cuisine</a></li>
+                <li><a href="#activities" class="nav-link">Activities</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <!-- Overlay for mobile menu -->
+            <div class="menu-overlay" id="menuOverlay"></div>
+        </div>
+    </header>
+
+    <!-- CLEAN SLIDESHOW -->
+    <section class="hero-slideshow" id="home">
+        <div class="slide active">
+            <img src="https://tse4.mm.bing.net/th/id/OIP.1AHnfll9NsrRPEPaq9EOCgHaEo?pid=Api&P=0&h=180" alt="Resort Overview">
+            <div class="slide-overlay">
+                <h1 class="slide-title">Experience Luxury in Nature</h1>
+                <p>Where comfort meets wilderness</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="http://www.nomadicweekends.com/wp-content/uploads/2022/07/Purulia-Futiyari-Resort-best-stay-beside-dam-just-4.5-hr-from-Kolkata-300x300.jpg" alt="Nature View">
+            <div class="slide-overlay">
+                <h1 class="slide-title">Tranquil Waterside Retreat</h1>
+                <p>Overlooking the serene Futiyari Dam</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.5JEkGH4-2sMBvRAWlDVAtQHaEK?pid=Api&P=0&h=180" alt="Luxury Room">
+            <div class="slide-overlay">
+                <h1 class="slide-title">Premium Accommodations</h1>
+                <p>Designed for your comfort</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6 PICTURES GRID - Clean Layout -->
+    <section id="gallery">
+        <div class="container">
+            <div class="grid-6">
+                <div class="card">
+                    <img src="https://tse1.mm.bing.net/th/id/OIP.vF1eibE-K_vN-zRASeRfygHaEG?pid=Api&P=0&h=180" class="card-img" alt="Lobby Area">
+                </div>
+                <div class="card">
+                    <img src="https://tse1.mm.bing.net/th/id/OIP.nChr8zwiSdRih10OI_KiewHaEG?pid=Api&P=0&h=180" class="card-img" alt="Garden View">
+                </div>
+                <div class="card">
+                    <img src="https://tse2.mm.bing.net/th/id/OIP.olV0Sa66v5UAZa0HiaaHIgHaEK?pid=Api&P=0&h=180" class="card-img" alt="Restaurant">
+                </div>
+                <div class="card">
+                    <img src="https://tse2.mm.bing.net/th/id/OIP.jmkEb0MmOGbPttV6pStVTAHaFc?pid=Api&P=0&h=180" class="card-img" alt="Spa">
+                </div>
+                <div class="card">
+                    <img src="https://tse1.mm.bing.net/th/id/OIP.rLYMSTHTW7Fi845u06P23wAAAA?pid=Api&P=0&h=180" class="card-img" alt="Pool">
+                </div>
+                <div class="card">
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.jI42k8ttox58SShw5fWU2wHaE8?pid=Api&P=0&h=180" class="card-img" alt="Activity">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIAL CUISINES - Clean Design -->
+    <section class="cuisine-section" id="cuisine">
+        <div class="container">
+            <div class="cuisine-header">
+                <h2>Special Cuisines of Ahalya Bhumi</h2>
+                <div class="title-line"></div>
+            </div>
+            
+            <p class="styled-intro">
+                Purulia, with its rich cultural heritage, offers delightful local cuisines that reflect the flavors of the region. Our food combines authentic Bengali, tribal, and rural influences for a unique culinary experience.
+            </p>
+            
+            <div class="grid-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Signature Dish 1">
+                    <div class="card-content">
+                        <h3 class="card-title">Traditional Bengali</h3>
+                        <p>Authentic flavors with local spices</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1563379091339-03246963d9d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Signature Dish 2">
+                    <div class="card-content">
+                        <h3 class="card-title">Tribal Specialties</h3>
+                        <p>Traditional tribal cooking methods</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Signature Dish 3">
+                    <div class="card-content">
+                        <h3 class="card-title">Rural Delights</h3>
+                        <p>Farm-to-table freshness</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Signature Dish 4">
+                    <div class="card-content">
+                        <h3 class="card-title">Fusion Creations</h3>
+                        <p>Modern twist on classics</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" class="feature-img" alt="Culinary Experience">
+                <div class="feature-content">
+                    <h3>Exquisite Culinary Journey</h3>
+                    <p>Discover our signature dishes crafted by master chefs using locally sourced ingredients and traditional techniques.</p>
+                    <a href="#" class="btn">Explore Full Menu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOURIST PLACES - Clean Layout -->
+    <section id="activities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tourist Places Around Resort</h2>
+                <div class="title-line"></div>
+            </div>
+            <p class="styled-intro">
+                Purulia is known for its natural beauty, cultural heritage, and historical significance. Explore scenic spots, temples, and unique landscapes around our resort.
+            </p>
+            <div class="grid-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Historical Site">
+                    <div class="card-content">
+                        <h3 class="card-title">Historical Temples</h3>
+                        <p>Ancient architecture and spiritual sites</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Nature Spot">
+                    <div class="card-content">
+                        <h3 class="card-title">Natural Waterfalls</h3>
+                        <p>Breathtaking natural wonders</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Dam View">
+                    <div class="card-content">
+                        <h3 class="card-title">Futiyari Dam</h3>
+                        <p>Scenic views and water activities</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Cultural Site">
+                    <div class="card-content">
+                        <h3 class="card-title">Cultural Villages</h3>
+                        <p>Traditional tribal experiences</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES & AMENITIES - Clean Cards -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Services & Amenities</h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="grid-3">
+                <div class="card service-card">
+                    <i class="fas fa-hiking service-icon"></i>
+                    <h3 class="card-title">Guided Tours</h3>
+                    <p>Expert-led nature and cultural tours</p>
+                </div>
+                <div class="card service-card">
+                    <i class="fas fa-swimming-pool service-icon"></i>
+                    <h3 class="card-title">Infinity Pool</h3>
+                    <p>Stunning views with premium facilities</p>
+                </div>
+                <div class="card service-card">
+                    <i class="fas fa-spa service-icon"></i>
+                    <h3 class="card-title">Wellness Spa</h3>
+                    <p>Traditional and modern treatments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLEAN NEWSLETTER -->
+    <section class="newsletter">
+        <div class="container">
+            <h3>Subscribe Our Newsletter</h3>
+            <p>Stay updated with our latest offers, events, and resort news</p>
+            <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+                <input type="email" class="form-input" placeholder="Enter your email address" required>
+                <button type="submit" class="form-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- CLEAN FOOTER -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>About Ahalya Bhumi</h4>
+                    <p>Nestled amidst majestic mountains and a crystal-clear lake, our resort harmonizes luxury with nature, offering a perfect retreat for relaxation and adventure.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Important Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#rooms">Accommodation</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Photo Gallery</a></li>
+                        <li><a href="#cuisine">Cuisines</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Other Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="#">Booking</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Information</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-user"></i> Chittaranjan Sarkar</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Baranti, Manpur, PO-Muradih,<br>Road No-5, PS- Santuri, Purulia</p>
+                        <p><i class="fas fa-phone"></i> +91 9932277966<br>+91 6297330209</p>
+                        <p><i class="fas fa-envelope"></i> ahalyabhumiresorts@gmail.com</p>
+                        <p><i class="fas fa-globe"></i> www.ahalyabhumiresorts.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>Copyright © <script>document.write(new Date().getFullYear());</script> Ahalya Bhumi Eco Tourism Resorts. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Automatic Slideshow
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showNextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        setInterval(showNextSlide, 4000);
+        
+        // Newsletter Form
+        function handleSubscribe(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            alert(`Thank you for subscribing with: ${email}`);
+            event.target.reset();
+        }
+        
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        // Close menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+        
+        // Close menu when clicking overlay
+        menuOverlay.addEventListener('click', toggleMenu);
+        
+        // Toggle menu when clicking burger button
+        menuToggle.addEventListener('click', toggleMenu);
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Close menu on window resize if it's open on mobile
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    </script>
+</body>
+</html>
