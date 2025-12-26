@@ -209,7 +209,7 @@
             opacity: 0.9;
         }
 
-        /* ===== ABOUT CONTENT SECTION ===== */
+        /* ===== ABOUT CONTENT SECTION - SINGLE COLUMN ===== */
         .about-section {
             padding: 100px 0;
         }
@@ -235,47 +235,144 @@
             border-radius: 2px;
         }
 
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            margin-bottom: 70px;
+            width: 100%;
         }
 
-        .about-text h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-weight: 600;
+        .about-images {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        .highlight {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .about-image {
+        .about-img {
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
+            transition: var(--transition);
+            width: 45%;
+            max-width: 500px;
         }
 
-        .about-image img {
+        .about-img img {
             width: 100%;
-            height: auto;
+            height: 300px;
+            object-fit: cover;
             display: block;
             transition: var(--transition);
         }
 
-        .about-image:hover img {
+        .about-img:hover img {
             transform: scale(1.03);
+        }
+
+        .about-text {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .about-text h3 {
+            font-size: 2.4rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-weight: 800;
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .welcome-title {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 900;
+            line-height: 1.2;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 40px;
+            font-weight: 700;
+            font-style: italic;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* ===== BOLD TEXT STYLES ===== */
+        .bold-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text);
+            text-align: justify;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .continuous-text {
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 700;
+            background: linear-gradient(to right, #f8fdfa, #e8f5f0);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .strong-highlight {
+            color: #0f4c75;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, #1a5f7a, #2a7f9c);
+            padding: 50px;
+            border-radius: var(--radius);
+            margin: 40px 0;
+            text-align: center;
+            border-left: 5px solid var(--accent);
+            color: white;
+        }
+
+        .quote-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-size: 1.2rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .signature {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid var(--accent);
+        }
+
+        .signature-text {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 700;
+            font-style: italic;
         }
 
         /* ===== VALUES SECTION ===== */
@@ -314,10 +411,14 @@
         }
 
         .value-card h4 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--primary);
             margin-bottom: 15px;
-            font-weight: 600;
+            font-weight: 700;
+        }
+
+        .value-card p {
+            font-weight: 500;
         }
 
         /* ===== CLEAN NEWSLETTER ===== */
@@ -329,8 +430,9 @@
         }
 
         .newsletter h3 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 15px;
+            font-weight: 700;
         }
 
         .newsletter p {
@@ -339,6 +441,7 @@
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 500;
         }
 
         .newsletter-form {
@@ -355,6 +458,7 @@
             border-radius: 50px;
             font-size: 1rem;
             background: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
         }
 
         .form-btn {
@@ -363,7 +467,7 @@
             padding: 0 35px;
             border-radius: 50px;
             border: none;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
         }
@@ -388,9 +492,9 @@
 
         .footer-col h4 {
             color: var(--white);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 25px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .footer-links {
@@ -405,6 +509,7 @@
             color: #a0aec0;
             text-decoration: none;
             transition: color 0.3s;
+            font-weight: 500;
         }
 
         .footer-links a:hover {
@@ -416,6 +521,7 @@
             display: flex;
             align-items: flex-start;
             gap: 10px;
+            font-weight: 500;
         }
 
         .contact-info i {
@@ -430,13 +536,16 @@
             border-top: 1px solid #4a5568;
             color: #a0aec0;
             font-size: 0.9rem;
+            font-weight: 500;
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .about-images {
+                gap: 20px;
+            }
+            .about-img {
+                width: 48%;
             }
             .values-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -450,6 +559,12 @@
             }
             .hero-title {
                 font-size: 2.5rem;
+            }
+            .welcome-title {
+                font-size: 2.4rem;
+            }
+            .bold-text {
+                font-size: 1.1rem;
             }
         }
 
@@ -505,6 +620,7 @@
                 display: block;
                 border-bottom: 1px solid #f0f0f0;
                 width: 90%;
+                font-weight: 600;
             }
             
             .nav-menu a::after {
@@ -535,7 +651,43 @@
             }
             
             .about-text h3 {
-                font-size: 1.6rem;
+                font-size: 1.9rem;
+            }
+            
+            .welcome-title {
+                font-size: 2rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .bold-text {
+                font-size: 1rem;
+                text-align: left;
+            }
+            
+            .about-images {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .about-img {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .about-img img {
+                height: 250px;
+            }
+            
+            .quote-section {
+                padding: 30px 20px;
+            }
+            
+            .quote-text {
+                font-size: 1.3rem;
             }
             
             .value-card {
@@ -557,7 +709,7 @@
             }
             
             .newsletter h3 {
-                font-size: 1.7rem;
+                font-size: 1.8rem;
             }
         }
 
@@ -583,9 +735,21 @@
                 font-size: 1.6rem;
             }
             
-            .about-text p {
+            .bold-text {
                 font-size: 1rem;
                 line-height: 1.6;
+            }
+            
+            .welcome-title {
+                font-size: 1.8rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .about-img img {
+                height: 200px;
             }
             
             .footer-grid {
@@ -621,7 +785,7 @@
             }
             
             .newsletter h3 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
             
             .newsletter p {
@@ -649,6 +813,14 @@
             
             .section-title h2 {
                 font-size: 1.4rem;
+            }
+            
+            .welcome-title {
+                font-size: 1.6rem;
+            }
+            
+            .about-img img {
+                height: 180px;
             }
         }
 
@@ -688,7 +860,7 @@
             padding: 12px 28px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: var(--transition);
             border: none;
             cursor: pointer;
@@ -704,7 +876,7 @@
     <!-- CLEAN HEADER WITH BURGER MENU -->
     <header>
         <div class="container header-content">
-            <a href="index.php" class="logo">
+            <a href="index.html" class="logo">
                 <div class="logo-icon">
                     <i class="fas fa-leaf"></i>
                 </div>
@@ -723,11 +895,11 @@
             
             <!-- Navigation Menu -->
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.php" class="nav-link">Home</a></li>
-                <li><a href="about.php" class="nav-link active">About</a></li>
-                <li><a href="index.php#rooms" class="nav-link">Rooms</a></li>
-                <li><a href="index.php#cuisine" class="nav-link">Cuisine</a></li>
-                <li><a href="index.php#activities" class="nav-link">Activities</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="rooms.html" class="nav-link">Rooms</a></li>
+                <li><a href="index.html#cuisine" class="nav-link">Cuisine</a></li>
+                <li><a href="index.html#activities" class="nav-link">Activities</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             
@@ -747,47 +919,48 @@
         </div>
     </section>
 
-    <!-- ABOUT CONTENT SECTION -->
+    <!-- ABOUT CONTENT SECTION - SINGLE COLUMN -->
     <section class="about-section">
         <div class="container">
             <div class="section-title">
-                <h2>Welcome to Ahalya Bhumi Eco Tourism Resort</h2>
+                <h2>Welcome to Ahalya Resorts</h2>
                 <div class="title-line"></div>
             </div>
             
-            <div class="about-content">
-                <div class="about-text animate-in">
-                    <h3>Our Sanctuary in Nature</h3>
-                    <p>Nestled amidst the serene embrace of pristine lake and majestic mountain, <span class="highlight">Ahalya Bhumi Eco Tourism Resort</span> offers a tranquil escape into nature's heart. Our resort is designed to harmonize with the natural beauty of its surroundings, providing guests with an unparalleled experience of peace and rejuvenation.</p>
-                    
-                    <p>At <span class="highlight">Ahalya Bhumi</span>, we believe in sustainable tourism that respects and preserves the environment. Every aspect of our resort reflects a commitment to eco-friendly practices while ensuring the utmost comfort and luxury for our guests.</p>
-                    
-                    <p>Whether you're waking up to the gentle ripples of the lake, embarking on a scenic trek through the mountains, or enjoying the vibrant hues of a sunset from your balcony, you'll feel a profound connection with nature.</p>
-                    
-                    <p>Our vision is to create a sanctuary where visitors can unwind, recharge, and reconnect with the earth. With personalized service, thoughtfully curated accommodations, and a variety of activities ranging from boating and bird-watching to cultural exploration, <span class="highlight">Ahalya Bhumi Eco Tourism Resort</span> promises an unforgettable stay.</p>
+            <div class="about-container">
+                <!-- Two Images Side by Side -->
+                <div class="about-images">
+                    <div class="about-img animate-in">
+                        <img src="./images/th12.jpg" alt="Resort Scenery">
+                    </div>
+                    <div class="about-img animate-in">
+                        <img src="./images/th4.jpeg" alt="Luxury Accommodation">
+                    </div>
                 </div>
                 
-                <div class="about-image animate-in">
-                    <img src="./images/th12.jpg" alt="Resort Scenery">
-                </div>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-image animate-in">
-                    <img src="./images/th4.jpeg" alt="Luxury Accommodation">
-                </div>
-                
-                <div class="about-text animate-in">
-                    <h3>The Ahalya Bhumi Experience</h3>
-                    <p><span class="highlight">Ahalya Bhumi Eco Tourism Resort</span>, a tranquil haven surrounded by lush green fields. Here, nature and luxury come together to create an unforgettable retreat for those seeking peace, beauty, and relaxation.</p>
-                    
-                    <p>Our resort is more than just a place to stay; it's an immersive experience where every detail has been thoughtfully designed to harmonize with the natural environment. Each luxury room offers a private balcony that opens up to breathtaking views of serene waters and verdant hills.</p>
-                    
-                    <p>Imagine starting your day with the soft glow of sunrise reflecting on the lake or unwinding in the evening as the mountains fade into the twilight. The sound of rustling leaves, the gentle ripple of the lake, and the fresh mountain breeze make every moment here a connection with nature.</p>
-                    
-                    <p>At <span class="highlight">Ahalya Bhumi</span>, we pride ourselves on providing a perfect balance between comfort and sustainability. Our accommodations feature elegant interiors, blending modern amenities with eco-friendly design, ensuring that you enjoy a luxurious yet mindful stay.</p>
-                    
-                    <p>We invite you to escape the bustle of everyday life and immerse yourself in the serene beauty of <span class="highlight">Ahalya Bhumi Eco Tourism Resort</span>, where the harmony of lakes and mountains becomes the backdrop to your most cherished memories.</p>
+                <!-- Single About Text Content - EK SAATH LIKHA HAI -->
+                <div class="about-content animate-in">
+                    <div class="about-text">
+                        <h3 class="welcome-title">Welcome to Ahalya Resorts</h3>
+                        <p class="welcome-subtitle">Namaste and a heartfelt welcome to Ahalya Resorts – your serene sanctuary nestled in the soul-stirring landscape of Purulia.</p>
+                        
+                        <p class="bold-text continuous-text">Step into a world where time slows down, and nature whispers its timeless tales. Here, at the cusp of vibrant culture and untouched wilderness, we have crafted a haven that is more than just a place to stay—it is an experience to be lived, a memory to be cherished, and a journey back to tranquility. As you arrive, feel the gentle embrace of the rustling leaves and the distant call of the hills. Our resort is designed to be in perfect harmony with its surroundings, blending traditional warmth with mindful comfort. Every cottage, every pathway, and every open space has been thoughtfully created to offer you uninterrupted views of Purulia's raw, earthy beauty—from the majestic Ayodhya Pahar ranges to the serene waters of the nearby Futiyari Dam.</p>
+                        
+                        <p class="bold-text continuous-text">At Ahalya, we believe in the art of unhurried living. Wake up to the soft glow of the sun rising over the mist-kissed hills. Spend your day exploring hidden trails, visiting ancient tribal villages, or simply relaxing in your private balcony with a book and the melody of birdsong. As evening descends, watch the sky set ablaze with hues of orange and purple, reflecting over the calm waters of Ladurka—a sight that stays with you long after you leave.</p>
+                        
+                        <div class="quote-section">
+                            <p class="quote-text">"Atithi Devo Bhava - The guest is divine"</p>
+                            <p class="quote-author">Ancient Indian Tradition</p>
+                        </div>
+                        
+                        <p class="bold-text continuous-text">Our hospitality is rooted in the timeless Indian tradition of <span class="highlight">Atithi Devo Bhava</span>—the guest is divine. From the warm smile that greets you to the lovingly prepared local cuisine that tells a story of the land, every detail is curated to make you feel at home. Whether you seek adventure in the form of treks and dam-side explorations, or wish to unwind with yoga at dawn and cultural performances under the stars, Ahalya Resorts is your perfect companion. Sustainability is at our core. We are deeply committed to preserving the pristine beauty of Purulia. Through eco-friendly practices, support for local artisans, and responsible tourism, we ensure that your visit contributes positively to the land and its people.</p>
+                        
+                        <p class="bold-text continuous-text">So come, leave the noise of the world behind. Let the calm of the mountains steady your spirit, let the stillness of the waters refresh your mind, and let the stories of this ancient land enrich your soul. <span class="strong-highlight">Welcome to Ahalya Resorts</span>—where every moment is a gentle reminder of how beautiful it is to simply be. We await the pleasure of serving you.</p>
+                        
+                        <div class="signature">
+                            <p class="signature-text">With warm regards,<br>The Ahalya Resorts Family</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -810,8 +983,8 @@
                 
                 <div class="value-card animate-in">
                     <i class="fas fa-heart value-icon"></i>
-                    <h4>Luxury with Purpose</h4>
-                    <p>Providing exceptional comfort while maintaining harmony with nature and local culture.</p>
+                    <h4>Atithi Devo Bhava</h4>
+                    <p>The guest is divine - our hospitality is rooted in timeless Indian traditions.</p>
                 </div>
                 
                 <div class="value-card animate-in">
@@ -847,12 +1020,12 @@
                 <div class="footer-col">
                     <h4>Important Links</h4>
                     <ul class="footer-links">
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="about.php">About Us</a></li>
-                        <li><a href="index.php#rooms">Accommodation</a></li>
-                        <li><a href="index.php#services">Services</a></li>
-                        <li><a href="index.php#gallery">Photo Gallery</a></li>
-                        <li><a href="index.php#cuisine">Cuisines</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="rooms.html">Accommodation</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#gallery">Photo Gallery</a></li>
+                        <li><a href="index.html#cuisine">Cuisines</a></li>
                         <li><a href="#contact">Contact Us</a></li>
                     </ul>
                 </div>
